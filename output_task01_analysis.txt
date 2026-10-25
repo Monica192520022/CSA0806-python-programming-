@@ -1,0 +1,57 @@
+==============================================================================
+DATA DICTIONARY
+==============================================================================
+- name: farmer_id | role: input | type: str | example: 'F001' | why: An identifier, never used in arithmetic, may have leading zeros -> text
+- name: shift | role: input | type: str | example: 'M' or 'E' | why: Morning/evening label; two possible values; text
+- name: litres | role: input | type: Decimal (fractional) | example: 8.5 | why: A measured quantity; fractional, so not int
+- name: fat | role: input | type: Decimal (fractional) | example: 4.2 | why: Percentage with 1 decimal (2 decimals with the analyser)
+- name: snf | role: input | type: Decimal (fractional) | example: 8.7 | why: Percentage with 1 decimal (2 decimals with the analyser)
+- name: rate | role: output | type: Decimal, 2 places | example: 33.40 | why: Rupees per litre; must be exact to the paisa
+- name: amount | role: output | type: Decimal, 2 places | example: 283.90 | why: litres x rate, rounded once to the paisa; this is what the bank pays
+- name: ten_day_total | role: output | type: Decimal, 2 places | example: 1593.23 | why: Sum of the rounded amounts of one farmer; paid every ten days
+- name: entry_count | role: derived | type: int (whole number) | example: 20 | why: A count of entries; whole numbers only
+
+==============================================================================
+NAMED CONSTANTS (never change during a run)
+==============================================================================
+- name: BASE_RATE | value: 30.00 | why a constant: Rs/litre for standard milk; changes only by revision
+- name: FAT_STEP_VALUE | value: 0.40 | why a constant: Rs/litre for each 0.1 % of fat from standard
+- name: SNF_STEP_VALUE | value: 0.30 | why a constant: Rs/litre for each 0.1 % of SNF from standard
+- name: STD_FAT | value: 3.5 | why a constant: Reference fat %
+- name: STD_SNF | value: 8.5 | why a constant: Reference SNF %
+- name: STEP | value: 0.1 | why a constant: Size of one fat/SNF step in %
+- name: MIN_FAT / MAX_FAT | value: 2.0 / 7.0 | why a constant: Allowed fat range given in the assignment
+- name: MIN_SNF / MAX_SNF | value: 7.0 / 10.0 | why a constant: ASSUMED SNF range (not given)
+- name: MAX_LITRES | value: 500 | why a constant: ASSUMED upper limit of one entry (catches typing errors)
+
+==============================================================================
+RULES EVERY CORRECT PAYMENT MUST SATISFY
+==============================================================================
+- rule: R1 | condition: litres > 0 and litres <= MAX_LITRES | why: A negative or zero quantity would reduce or cancel a payment
+- rule: R2 | condition: MIN_FAT <= fat <= MAX_FAT (2.0 .. 7.0) | why: Outside this range milk is not buffalo/cow milk -> typing or machine error
+- rule: R3 | condition: MIN_SNF <= snf <= MAX_SNF | why: Same reason as R2 for SNF
+- rule: R4 | condition: every input must be a finite number | why: 'eight', '8,5', 'nan' must be rejected
+- rule: R5 | condition: amount has exactly 2 decimals | why: The bank statement is in paise
+- rule: R6 | condition: ten_day_total == sum of the rounded amounts | why: Otherwise the total differs from the bank statement by a few paise
+
+ASSUMPTIONS
+* SNF must lie between 7.0 and 10.0 (the assignment only fixes the fat range).
+* One entry is at most 500 litres.
+* A step is rounded to the NEAREST whole 0.1 % (assignment: 'every 0.1 %').
+* Half a paisa is rounded up (ROUND_HALF_UP), as banks do.
+* Each payment is rounded to the paisa first; the ten-day total is the sum of
+  those.
+
+==============================================================================
+ALTERNATIVE: separate variables per entry vs one tuple per entry in a list
+==============================================================================
+       n design                source lines  source chars   time (s)
+     300 separate variables            1201         24770     0.0134
+     300 list of tuples           6 (fixed)  ~150 (fixed)     0.0003
+    6000 separate variables           24001        537641     0.2393
+    6000 list of tuples           6 (fixed)  ~150 (fixed)     0.0095
+  150000 separate variables         600,001 not attempted
+  150000 list of tuples           6 (fixed)  ~150 (fixed)     0.5679
+
+Both designs give the same total (asserted), but the program TEXT of the
+first design grows with n, because every new farmer needs new variable names.
