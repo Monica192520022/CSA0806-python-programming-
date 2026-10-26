@@ -1,0 +1,8 @@
+float  : 33400.30000000061
+Decimal: 33400.30
+False True
+
+--- Change asked in the task: Decimal(float(amount)) ---
+Decimal(float(amount)) total : 33400.29999999999857893118278
+Equals 33400.30 ?            : False
+Decimal(float('33.40'))      : 33.39999999999999857891452847979962825775146484375

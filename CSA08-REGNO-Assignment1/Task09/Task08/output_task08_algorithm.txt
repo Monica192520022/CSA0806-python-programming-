@@ -1,0 +1,17 @@
+1) Hand trace of the pseudocode for three entries (compare with Task08/pseudocode.md)
+    i  litres   fat   snf fat_steps snf_steps    rate   amount     total
+    1      10   3.5   8.5         0         0   30.00   300.00    300.00
+    2     8.5   4.2   8.7         7         2   33.40   283.90    583.90
+    3      12   3.1   8.3        -4        -2   27.80   333.60    917.50
+   ten_day_total = 917.50
+
+2) ALTERNATIVE: store every amount in a list, or keep a running total
+          n method                      total  time (s)  peak memory (KB)
+        300 store then add         1569055.10    0.0288              36.7
+        300 running total          1569055.10    0.0267               4.1
+       6000 store then add        31613349.86    0.5402             665.0
+       6000 running total         31613349.86    0.5927               4.1
+     150000 store then add       791694865.85   14.9213           16491.3
+     150000 running total        791694865.85   14.5172               4.1
+   Same total, same O(n) time; peak memory grows with n only for 'store then add'.
+   Storing is still needed when the amounts must be printed again, sorted, or audited.

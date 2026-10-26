@@ -1,0 +1,29 @@
+ID  Case                        Input (L, fat, snf)     Expected            Actual              Result
+----------------------------------------------------------------------------------------------------------
+N1  standard milk               10, 3.5, 8.5            30.00 / 300.00      30.00 / 300.00      PASS
+N2  fat above standard          8.5, 4.2, 8.5           32.80 / 278.80      32.80 / 278.80      PASS
+N3  fat below standard          10, 3.1, 8.5            28.40 / 284.00      28.40 / 284.00      PASS
+N4  SNF above standard          10, 3.5, 8.9            31.20 / 312.00      31.20 / 312.00      PASS
+N5  SNF below standard          10, 3.5, 8.1            28.80 / 288.00      28.80 / 288.00      PASS
+N6  fat and SNF above           8.5, 4.2, 8.7           33.40 / 283.90      33.40 / 283.90      PASS
+N7  fat and SNF below           12, 3.1, 8.3            27.80 / 333.60      27.80 / 333.60      PASS
+B1  boundary: lowest fat 2.0    10, 2.0, 8.5            24.00 / 240.00      24.00 / 240.00      PASS
+B2  boundary: highest fat 7.0   10, 7.0, 8.5            44.00 / 440.00      44.00 / 440.00      PASS
+B3  boundary: lowest SNF 7.0    10, 3.5, 7.0            25.50 / 255.00      25.50 / 255.00      PASS
+B4  boundary: highest SNF 10.0  10, 3.5, 10.0           34.50 / 345.00      34.50 / 345.00      PASS
+B5  half-paisa rounds up        7.25, 3.0, 8.0          26.50 / 192.13      26.50 / 192.13      PASS
+I1  text instead of litres      abc, 3.5, 8.5           ValueError          ValueError          PASS
+I2  negative litres             -5, 3.5, 8.5            ValueError          ValueError          PASS
+I3  zero litres                 0, 3.5, 8.5             ValueError          ValueError          PASS
+I4  litres too large            501, 3.5, 8.5           ValueError          ValueError          PASS
+I5  fat below 2.0               10, 1.9, 8.5            ValueError          ValueError          PASS
+I6  fat above 7.0               10, 7.1, 8.5            ValueError          ValueError          PASS
+I7  fat typed as 'eight'        10, eight, 8.5          ValueError          ValueError          PASS
+I8  comma decimal '8,5'         10, 3.5, 8,5            ValueError          ValueError          PASS
+I9  SNF below 7.0               10, 3.5, 6.9            ValueError          ValueError          PASS
+I10 nan as fat                  10, nan, 8.5            ValueError          ValueError          PASS
+I11 empty litres                <empty>, 3.5, 8.5       ValueError          ValueError          PASS
+H1  5 entries, total by hand    5 entries               1593.23             1593.23             PASS
+----------------------------------------------------------------------------------------------------------
+24 test cases, 0 failures
+All tests passed.

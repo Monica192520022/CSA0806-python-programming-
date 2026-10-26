@@ -1,0 +1,28 @@
+1) Return versus print
+   returned value can be stored and reused: 283.9 -> doubled: 567.8
+   printed: 283.9
+   value stored from the print-only function: None
+
+2) Local and global names
+   BASE_RATE is read inside rate_per_litre without 'global' -> OK: 30.0
+   bad_revision() returns 99.0 but global BASE_RATE is still 30.0
+   UnboundLocalError: cannot access local variable 'BASE_RATE' where it is not associated with a value
+   Rule: read constants inside functions, never change them there.
+
+3) Docstrings
+   rate_per_litre.__doc__ = Return the price per litre (float, 2 decimals) for the given fat % and SNF %.
+   payout.__doc__ = Return the amount payable (float, 2 decimals) for one entry.
+   ten_day_total.__doc__ = Return the total of all (litres, fat, snf) entries, rounded to 2 decimals.
+
+4) The three entries of Task 7 through the functions
+      10 L fat 3.5 snf 8.5 rate  30.00 pay   300.00
+     8.5 L fat 4.2 snf 8.7 rate  33.40 pay   283.90
+      12 L fat 3.1 snf 8.3 rate  27.80 pay   333.60
+   ten_day_total = 917.5
+
+5) ALTERNATIVE: no functions / lambda  (time for n entries, best of 3)
+          n   functions  no functions    lambda   same total?
+        300     0.00222       0.00183   0.00200   True
+       6000     0.02536       0.01894   0.02618   True
+     150000     0.64041       0.53362   0.60771   True
+   Repeated code: functions = formula written once; no-function script = once per place used.

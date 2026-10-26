@@ -1,0 +1,29 @@
+1) The example of the assignment (1003 payments)
+   int paise            : 3340030 paise = 33400.30
+   float, no rounding   : 33400.30000000061
+   float, round each add: 33400.3
+   Decimal              : 33400.30
+
+2) Memory per value (sys.getsizeof, bytes)
+   float   33.4        : 24
+   int     3340        : 28
+   Decimal 33.40       : 120
+
+3) Exactness and time for n payments (best of 3)
+       n method                            total  exact?   time (s)
+     300 int paise                      64904.14    True    0.00023
+     300 float, no rounding     64904.140000000014   False    0.00010
+     300 float, round each add          64904.14    True    0.00031
+     300 Decimal                        64904.14    True    0.00020
+
+    6000 int paise                    1227572.58    True    0.00353
+    6000 float, no rounding     1227572.5800000029   False    0.00185
+    6000 float, round each add        1227572.58    True    0.00460
+    6000 Decimal                      1227572.58    True    0.00382
+
+  150000 int paise                   30854055.16    True    0.10392
+  150000 float, no rounding     30854055.159999833   False    0.04360
+  150000 float, round each add       30854055.16    True    0.15370
+  150000 Decimal                     30854055.16    True    0.10053
+
+exact? = identical to the integer-paise total (the reference).

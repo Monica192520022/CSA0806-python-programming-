@@ -1,0 +1,38 @@
+ID  Season    Mode         Input (L, fat, snf)   Expected rate/pay   Actual rate/pay     Result
+-----------------------------------------------------------------------------------------------
+S1  summer    proportional 10, 3.50, 8.50        32.00/320.00        32.00/320.00        PASS
+S2  standard  proportional 10, 3.50, 8.50        30.00/300.00        30.00/300.00        PASS
+S3  summer    proportional 10, 4.20, 8.70        35.75/357.50        35.75/357.50        PASS
+S4  standard  proportional 10, 4.20, 8.70        33.40/334.00        33.40/334.00        PASS
+S5  summer    proportional 10, 3.57, 8.53        32.41/324.10        32.41/324.10        PASS
+S6  standard  proportional 10, 3.57, 8.53        30.37/303.70        30.37/303.70        PASS
+S7  standard  nearest      10, 3.57, 8.53        30.40/304.00        30.40/304.00        PASS
+S8  summer    proportional 10, 2.00, 7.00        20.75/207.50        20.75/207.50        PASS
+S9  summer    proportional 10, 3.45, 8.50        31.78/317.80        31.78/317.80        PASS
+
+Invalid readings
+V1  fat with 3 decimals     ValueError expected   PASS
+V2  fat above 7.0           ValueError expected   PASS
+V3  zero litres             ValueError expected   PASS
+V4  text litres             ValueError expected   PASS
+V5  snf with comma          ValueError expected   PASS
+
+Season by month
+   month  1 -> standard  PASS
+   month  3 -> standard  PASS
+   month  4 -> summer    PASS
+   month  5 -> summer    PASS
+   month  6 -> summer    PASS
+   month  7 -> standard  PASS
+   month 12 -> standard  PASS
+   month 13 -> ValueError PASS
+
+Ten-day bonus (more than 500 L earns Rs 0.50 per litre on all litres)
+ID  Season      Litres        Base    Bonus       Total   Result
+B1  summer         510    16320.00   255.00    16575.00   PASS
+B2  summer         500    16000.00     0.00    16000.00   PASS
+B3  summer       500.1    16003.20   250.05    16253.25   PASS
+B4  standard       600    18000.00   300.00    18300.00   PASS
+----------------------------------------------------------------------------------
+failures: 0
+All Task 12 tests passed.

@@ -1,0 +1,16 @@
+Farmer  Shift   Litres   Fat   SNF     Rate     Amount
+------------------------------------------------------
+F001    M        10.00   3.5   8.5    30.00     300.00
+F001    E         8.50   4.2   8.7    33.40     283.90
+F001    M        12.00   3.1   8.3    27.80     333.60
+F001    E        15.50   3.8   8.5    31.20     483.60
+F001    M         7.25   3.0   8.0    26.50     192.13
+line 6: REJECTED - litres 'abc' is not a valid number
+line 7: REJECTED - fat 7.5 must be between 2.0 and 7.0
+F002    M        20.00   4.0   8.6    32.30     646.00
+line 9: REJECTED - litres -5 must be above 0 and at most 500
+line 10: REJECTED - expected 5 columns, found 6
+------------------------------------------------------
+Ten-day total F001: Rs 1,593.23
+Ten-day total F002: Rs 646.00
+Grand total      : Rs 2,239.23

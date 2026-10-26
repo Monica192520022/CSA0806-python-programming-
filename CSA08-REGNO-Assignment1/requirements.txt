@@ -1,0 +1,2 @@
+# Python 3.12 - standard library only (decimal, csv, json, time, random, math, tracemalloc, ...)
+# No third-party packages are required.

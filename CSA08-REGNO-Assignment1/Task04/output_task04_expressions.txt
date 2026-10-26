@@ -1,0 +1,63 @@
+1) Operator precedence and associativity
+   2 + 3 * 4                  = 14
+   (2 + 3) * 4                = 20
+   -2 ** 2                    = -4
+   (-2) ** 2                  = 4
+   2 ** 3 ** 2                = 512
+   (2 ** 3) ** 2              = 64
+   10 - 4 - 3                 = 3
+   -7 // 2                    = -4
+   not True or True           = True
+   True or False and False    = True
+
+2) Surprising results (floating point and rounding)
+   (4.2 - 3.5) / 0.1            -> 7.000000000000002
+   (3.8 - 3.5) / 0.1            -> 2.9999999999999982
+   int((3.8 - 3.5) / 0.1)       -> 2
+   round((3.8 - 3.5) / 0.1)     -> 3
+   0.1 * 3                      -> 0.30000000000000004
+   1.1 + 2.2                    -> 3.3000000000000003
+   round(2.5), round(3.5)       -> (2, 4)
+   -2 ** 2                      -> -4
+   (4.2-3.5)/0.1 is 7.000000000000002, not 7 (the assignment quotes 7.000000000000001; the last
+   digits depend on the exact subtraction), because 4.2, 3.5 and 0.1 cannot all be
+   stored exactly in binary; round() brings the step count back to 7.
+   (3.8-3.5)/0.1 is 2.9999999999999982: int() truncates it to 2 -> a WRONG step count.
+   round(2.5)=2 and round(3.5)=4: Python rounds exact halves to the even number.
+
+3) round(), int() and math.floor() for negative values
+        x  round   int  floor
+     -2.5     -2    -2     -3
+     -2.4     -2    -2     -3
+     -0.6     -1     0     -1
+     -0.4      0     0     -1
+      0.4      0     0      0
+      2.6      3     2      2
+   int() cuts towards zero, floor() goes down, round() goes to the nearest.
+
+4) Comparison chaining and Boolean operators
+   2.0 <= fat <= 7.0 with fat=4.2 : True
+   2.0 <= 7.5 <= 7.0              : False
+   1 < 2 < 3 > 2                  : True
+   litres > 0 and 7.0 <= snf <= 10.0 : True
+   short circuit: False and (1/0)  : False
+
+5) The final expression (round-based steps) for the three entries of Task 7
+   fat 3.5 snf 8.5: fat_steps =   0, rate = 30.00
+   fat 4.2 snf 8.7: fat_steps =   7, rate = 33.40
+   fat 3.1 snf 8.3: fat_steps =  -4, rate = 27.80
+
+6) ALTERNATIVE: int() / math.floor() instead of round()  (snf = 8.5)
+     fat  exact steps |          round |            int |          floor
+     4.2            7 |   7 -> Rs  32.80 |   7 -> Rs  32.80 |   7 -> Rs  32.80
+     3.1           -4 |  -4 -> Rs  28.40 |  -3 -> Rs  28.80 |  -4 -> Rs  28.40
+     3.8            3 |   3 -> Rs  31.20 |   2 -> Rs  30.80 |   2 -> Rs  30.80
+     3.3           -2 |  -2 -> Rs  29.20 |  -2 -> Rs  29.20 |  -3 -> Rs  28.80
+   fat 4.2 : all three methods agree here (the float error is +0.000000000000002, harmless for int/floor).
+   fat 3.1 : int() gives -3 steps (Rs 28.80), the correct rate is Rs 28.40 (-4 steps): int cuts towards zero.
+   fat 3.8 : int() and floor() both lose a step (2 instead of 3) because the float result is just below 3.
+   fat 3.3 : floor() gives -3 instead of -2 for the same reason on the negative side.
+   Only round() is correct for all four readings.
+   round  500000 evaluations: 0.231 s   (O(1) time, O(1) space)
+   int    500000 evaluations: 0.219 s   (O(1) time, O(1) space)
+   floor  500000 evaluations: 0.179 s   (O(1) time, O(1) space)

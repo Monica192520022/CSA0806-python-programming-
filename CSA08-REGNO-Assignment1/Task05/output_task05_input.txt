@@ -1,0 +1,42 @@
+1) input() always returns a string
+   typed 8.5 -> value = '8.5' type: str
+   value + 1 would fail; float(value) + 1 = 9.5
+   int('8.5') -> ValueError: invalid literal for int() with base 10: '8.5'
+
+2) Checking input: string methods vs try/except
+   text        str methods   try/except
+   '8.5'              True          8.5
+   '8,5'             False         None
+   ' 8.5 '            True          8.5
+   'eight'           False         None
+   ''                False         None
+   '-3'               True         -3.0
+   '1e2'             False        100.0
+   'nan'             False         None
+   'inf'             False         None
+   '8.5.1'           False         None
+   '8.'               True          8.0
+   '8,5' and 'eight' are rejected by both; ' 8.5 ' is accepted by both (spaces stripped).
+   '1e2' is rejected by the str check but accepted by float(); 'nan'/'inf' need math.isfinite.
+
+3) Retry loop with simulated typing: 8,5 -> eight -> 9.9 -> 4.2
+Fat % (2.0-7.0): 8,5
+   '8,5' is not a number. Use a dot, e.g. 8.5
+Fat % (2.0-7.0): eight
+   'eight' is not a number. Use a dot, e.g. 8.5
+Fat % (2.0-7.0): 9.9
+   9.9 is outside 2.0 .. 7.0
+Fat % (2.0-7.0): 4.2
+   accepted fat = 4.2
+
+4) Aligned output with f-strings
+   Farmer    Litres   Fat   SNF    Rate    Amount
+   F001        10.0   3.5   8.5   30.00    300.00
+   F002         8.5   4.2   8.7   33.40    283.90
+   F003        12.0   3.1   8.3   27.80    333.60
+   TOTAL                                   917.50
+   centred: [   3.50   ]   zero padded: [00007.50]   thousands: [1,234,567.89]
+
+5) ALTERNATIVE timing: valid and invalid text (200,000 repeats)
+   input '8.5'    str methods: 0.334 s   try/except: 0.192 s
+   input 'eight'  str methods: 0.316 s   try/except: 0.494 s

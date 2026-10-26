@@ -1,0 +1,26 @@
+(no table was printed above: milkrate.__name__ is 'milkrate',
+ not '__main__', so the block under  if __name__ == '__main__'  was skipped)
+
+1) Three ways of importing
+   milkrate.payout(8.5, 4.2, 8.7)      = 283.9
+   payout(8.5, 4.2, 8.7)               = 283.9
+   mr.rate_per_litre(3.1, 8.3)         = 27.8
+   same function object? True
+
+2) This script's own __name__ = '__main__'
+
+3) Where Python looks for modules (first 3 entries of sys.path)
+   C:\Users\Lenovo\Downloads\CSA08-REGNO-Assignment1\Task07
+   C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\python312.zip
+   C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\DLLs
+   milkrate was loaded from: C:\Users\Lenovo\Downloads\CSA08-REGNO-Assignment1\Task07\milkrate.py
+
+4) Import cost: Python loads a module once and keeps it in sys.modules
+   'milkrate' in sys.modules: True
+   first import :   11733.3 microseconds
+   second import:       3.5 microseconds (from sys.modules)
+   reload       :    4812.1 microseconds (re-reads the file)
+
+5) What happens WITHOUT the  if __name__ == '__main__'  guard
+   >>> noguard: this table line prints on import!
+   The module printed text just because it was imported.

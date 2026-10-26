@@ -1,0 +1,26 @@
+1) Totals (A is the reference: Decimal, each payment rounded once to the paisa)
+       n |   A Decimal each |   B Decimal once     B-A |     C float each (raw)          C-A |     D float once     D-A
+     300 |        178428.00 |        178427.81   -0.19 |     178427.88000000006     -1.20E-1 |        178427.81   -0.19
+           round(C,2) == A ? False
+    6000 |       3658301.01 |       3658298.34   -2.67 |     3658298.4599999962     -2.55E+0 |       3658298.34   -2.67
+           round(C,2) == A ? False
+  150000 |      91718915.26 |      91718852.09  -63.17 |      91718851.77999999     -6.35E+1 |      91718852.09  -63.17
+           round(C,2) == A ? False
+
+2) How many single payments differ between float round() and Decimal ROUND_HALF_UP?
+   n =    300: 12 payments differ by one paisa
+   n =   6000: 255 payments differ by one paisa
+   n = 150000: 6348 payments differ by one paisa
+
+3) Time to compute (seconds, one run)
+       n  Decimal each  Decimal once  float each  float once
+     300        0.0021        0.0018      0.0016      0.0022
+    6000        0.0428        0.0348      0.0569      0.0512
+  150000        1.4577        1.1702      1.2210      1.0992
+
+4) ALTERNATIVE: rate table (dictionary) instead of recalculating every entry
+   distinct (fat, snf) pairs in 150,000 entries: k = 756
+   full table (all 1581 allowed pairs) built in 0.0161 s, dict size 73808 bytes
+   recalculate each entry : 1.2132 s  total 91718915.26
+   dictionary lookup      : 0.2274 s  total 91718915.26
+   same total? True   speed-up x5.33

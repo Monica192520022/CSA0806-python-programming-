@@ -1,0 +1,31 @@
+1) Rate card loaded from rate_card.json
+   RateCard(base_rate=Decimal('30.00'), fat_step_value=Decimal('0.40'), snf_step_value=Decimal('0.30'), std_fat=Decimal('3.5'), std_snf=Decimal('8.5'), step=Decimal('0.1'))
+   rate for 4.2 / 8.7 = 33.40
+
+2) A rate revision WITHOUT touching the program (new JSON file only)
+   old card payout: 334.00   revised card payout: 357.50
+
+3) The loader refuses a damaged rate card
+   missing key  rejected -> rate card is missing 'base_rate'
+   text value   rejected -> rate card value 'base_rate' = 'thirty' is not a number
+   negative     rejected -> rate card value 'fat_step_value' must be a non-negative number
+   zero step    rejected -> rate card 'step' must not be zero
+
+4) ALTERNATIVE: start-up time and size to read t values from JSON
+    t values  file bytes  read time (ms)
+           6         139          15.652
+        1000        6985          20.498
+      100000      888973          33.499
+   A real rate card has about 6 values: reading it costs a fraction of a millisecond, once.
+
+5) Scale test with the final design (Decimal, JSON card)
+   n =    300: total Rs     190,772.90   time 0.002 s
+   n =   6000: total Rs   3,660,312.40   time 0.048 s
+   n = 150000: total Rs  91,586,237.94   time 1.446 s
+
+6) Limitations
+   - Decimal is slower than float (roughly 1.5-2x in Task 10) - acceptable here: 150,000 entries take well under a second.
+   - The JSON file can be edited wrongly; load_rate_card() validates but cannot know the intended rate.
+   - Seasonal rates and the volume bonus need more than one card and a bonus rule (Task 12).
+   - The whole list of entries is held in memory; a district union should read a file row by row.
+   - SNF range (7.0-10.0) and MAX_LITRES (500) are assumptions that the union must confirm.

@@ -1,0 +1,22 @@
+1) Two-decimal readings: old design vs new design (standard season, 10 litres)
+     fat   snf |  old rate   old pay |  new rate   new pay |  old-new
+    3.50  8.50 |     30.00    300.00 |     30.00    300.00 |     0.00
+    3.54  8.54 |     30.00    300.00 |     30.28    302.80 |    -2.80
+    3.57  8.53 |     30.40    304.00 |     30.37    303.70 |     0.30
+    3.64  8.46 |     30.40    304.00 |     30.44    304.40 |    -0.40
+    4.23  8.68 |     33.40    334.00 |     33.46    334.60 |    -0.60
+   The old module rounds 3.57 % to the 3.6 % step, so the farmer is overpaid or underpaid.
+
+2) Tie readings (x.x5): float step counting vs exact Decimal step counting
+   fat readings 2.00 .. 7.00 where float and Decimal disagree on the step: 29 of 501
+   fat 2.25: float steps = -12.5 -> round gives -12, Decimal gives -13
+   fat 2.35: float steps = -11.499999999999998 -> round gives -11, Decimal gives -12
+   fat 2.45: float steps = -10.499999999999998 -> round gives -10, Decimal gives -11
+   fat 2.65: float steps = -8.5 -> round gives -8, Decimal gives -9
+
+3) What the old module cannot express
+   - It has ONE BASE_RATE = 30.00 and ONE FAT_STEP_VALUE = 0.40 (module-level names).
+   - Summer rates need base 32.00 and fat step 0.45: the module would have to be edited,
+     or the constants changed at run time (global state - dangerous).
+   - No function knows about ten-day litres, so the Rs 0.50 bonus has no place to live.
+   old payout for summer entry 10 L, 3.5 / 8.5 = 300.0 (should be 320.00)
