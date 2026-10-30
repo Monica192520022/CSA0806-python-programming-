@@ -1,0 +1,10 @@
+n | naive calls | memo calls | loop iterations | naive time(s) | loop time(s)
+10 | 177 | 11 | 9 | 0.000013 | 0.00000259
+20 | 21891 | 21 | 19 | 0.001475 | 0.00000270
+25 | 242785 | 26 | 24 | 0.017608 | 0.00000382
+30 | 2692537 | 31 | 29 | 0.185392 | 0.00000582
+
+n = 1000
+memo at default limit ( 1000 ): RecursionError
+loop: OK, iterations = 999 , digits = 209
+loop == memo (limit raised): True

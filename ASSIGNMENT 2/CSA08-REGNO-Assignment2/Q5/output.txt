@@ -1,0 +1,9 @@
+['Tea', 'Vada'] ['Tea', 'Vada']
+['Tea'] ['Vada']
+(['Tea', 'Vada'],)
+(200, 10.0, 210.0) (200, 36.0, 236.0)
+local global
+changed
+1 2
+['Tea', 'Dosa'] ['Tea', 'Dosa'] ['Vada']
+['Tea'] ['Idli'] ['Coffee']

@@ -1,0 +1,7 @@
+run 1: same text: True | length: 3048890
+        += time: 0.0386 s   join time: 0.0567 s
+run 2: same text: True | length: 3048890
+        += time: 0.0138 s   join time: 0.0341 s
+run 3: same text: True | length: 3048890
+        += time: 0.0190 s   join time: 0.0216 s
+AVERAGE of 3 runs: += 0.0238 s | join 0.0375 s

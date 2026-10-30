@@ -1,0 +1,14 @@
+[1, 2, 3, 5, 8, 13]
+n  naive_calls  memo_calls
+10 177 11
+20 21891 21
+25 242785 26
+30 2692537 31
+naive: 121393 calls = 242785
+memo : 121393 calls = 26
+limit 1000
+RecursionError: maximum recursion depth exceeded
+raised limit ok, calls 1001 digits 209
+loop equal: True
+naive30 time 0.19475043999999997
+loop1000 time 6.577400000029598e-05

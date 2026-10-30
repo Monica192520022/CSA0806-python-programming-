@@ -1,0 +1,18 @@
+while, blank ignored:
+  wrong, attempt 1
+  wrong, attempt 2
+  wrong, attempt 3
+  LOCKED for 30 minutes
+while, success:
+  OK on attempt 1
+for, blank burns attempt:
+  wrong/blank, attempt 1
+  wrong/blank, attempt 2
+  wrong/blank, attempt 3
+  LOCKED for 30 minutes
+extended (security ok), 5 wrong:
+  LOCKED after 5 attempts
+extended (security failed), 5 wrong:
+  LOCKED after 3 attempts
+recursive:
+  LOCKED for 30 minutes

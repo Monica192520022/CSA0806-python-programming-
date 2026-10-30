@@ -1,0 +1,10 @@
+units ration senior | predicted | if-elif   | buggy (separate ifs)
+   50   True  False | FULL      | FULL      | ['FULL', 'PARTIAL']  <-- DOUBLE
+  100  False  False | FULL      | FULL      | ['FULL']
+  101   True  False | PARTIAL   | PARTIAL   | ['PARTIAL']
+  101  False  False | NONE      | NONE      | ['NONE']
+  200   True   True | PARTIAL   | PARTIAL   | ['PARTIAL']
+  200  False   True | NONE      | NONE      | ['NONE']
+  201  False   True | SENIOR    | SENIOR    | ['SENIOR']
+  250   True  False | NONE      | NONE      | ['NONE']
+All predictions matched if-elif-else and nested versions.
