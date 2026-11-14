@@ -1,11 +1,11 @@
 # Assignment 4 - Robust Data Processing with Files, Exceptions, Modules and Packages
 
-- **Course:** Python Programming (CSA08)
+- **Course:** Python Programming (CSA0806)
 - **Course Outcome:** CO4 – Design and implement Python programs using file handling, modules and packages to process and analyse data effectively.
 - **Name:** Monica M.
-- **Register Number:** 192311001
-- **Python Version:** Python 3.12.4
-- **Submission Date:** 15/11/2026
+- **Register Number:** 192520022
+- **Python Version:** Python 3.14
+  
 
 ## Libraries Used
 - Standard Library modules only (`os`, `sys`, `pathlib`, `tempfile`, `re`, `csv`, `datetime`)
