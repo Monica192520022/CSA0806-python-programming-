@@ -1,0 +1,23 @@
+1. missing column (no2 removed)
+   rejected: missing column: no2
+2. wrong delimiter (semicolon)
+   rejected: missing column: station
+3. different encoding (latin-1 with the letter e-acute)
+   utf-8 failed, trying latin-1
+   OK: 1 rows read
+4. empty file
+   rejected: the file is empty
+
+SQL with a quote in the station name
+  with +      : ERROR -> near "Brien": syntax error
+  with ?      : 70.0
+  injection with + returns 2 rows (should be 0)
+  injection with ? returns 0 rows
+
+Tricky sentences for the sentiment scorer
+   neutral  (score 0 ) expected: negative (sarcasm)         | Oh good, the water is dirty again.
+   negative (score -1 ) expected: positive (double negative) | The staff are not never helpful.
+   neutral  (score 0 ) expected: mixed                      | The air is clean but the water is dirty.
+   positive (score 1 ) expected: negative                   | I cannot say the service is good.
+   positive (score 1 ) expected: positive                   | Not bad at all.
+   positive (score 1 ) expected: negative                   | The bus was not very helpful.

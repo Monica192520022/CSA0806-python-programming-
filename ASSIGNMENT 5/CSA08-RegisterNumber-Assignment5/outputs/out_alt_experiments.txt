@@ -1,0 +1,17 @@
+B1 alternative: rows | loops time, peak MB | pandas time, peak MB
+   1000 (0.001, 0.1) (0.005, 0.3)
+   100000 (0.121, 6.2) (0.045, 6.6)
+   1000000 (1.383, 62.5) (0.263, 66.0)
+
+A2 alternative: drop missing readings instead of filling (mean PM2.5 of October)
+   Adyar | readings kept: fill 744 drop 716 | month mean fill 61.86 drop 61.82 | largest daily difference 1.52
+   Guindy | readings kept: fill 743 drop 718 | month mean fill 101.86 drop 101.79 | largest daily difference 1.43
+   time for 200,000 values: drop 3.5 ms | forward fill 14.2 ms | median by sorting 37.2 ms
+
+A4 alternative: cost of 100,000 debug messages
+   print: 0.113 s | logging at DEBUG (to file): 0.872 s | logging at WARNING (switched off): 0.038 s
+
+B2 alternative: inserting n rows
+   1000 executemany: 0.0005 s | execute in loop: 0.0008 s
+   10000 executemany: 0.0048 s | execute in loop: 0.0082 s
+   100000 executemany: 0.0566 s | execute in loop: 0.0995 s

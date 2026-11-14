@@ -1,0 +1,18 @@
+Sat Nov 14 10:49:13 2026    profile.out
+
+         1576493 function calls (1576491 primitive calls) in 0.783 seconds
+
+   Ordered by: cumulative time
+   List reduced from 49 to 8 due to restriction <8>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.783    0.783 {built-in method builtins.exec}
+        1    0.001    0.001    0.783    0.783 <string>:1(<module>)
+        1    0.102    0.102    0.781    0.781 /home/claude/a5/b3_loops_pandas_sql.py:29(method_loops)
+     4380    0.007    0.000    0.334    0.000 /usr/lib/python3.12/statistics.py:468(mean)
+   105121    0.197    0.000    0.300    0.000 /usr/lib/python3.12/csv.py:112(__next__)
+     4380    0.062    0.000    0.293    0.000 /usr/lib/python3.12/statistics.py:154(_sum)
+     4380    0.016    0.000    0.154    0.000 {built-in method builtins.sum}
+    27289    0.018    0.000    0.085    0.000 /usr/lib/python3.12/fractions.py:613(forward)
+
+

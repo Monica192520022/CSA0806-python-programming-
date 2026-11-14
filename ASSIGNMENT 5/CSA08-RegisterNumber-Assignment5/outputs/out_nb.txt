@@ -1,0 +1,4 @@
+Naive Bayes (leave-one-out) accuracy: 35 of 50 = 70 %
+Word-list scorer accuracy           : 46 of 50 = 92 %
+Naive Bayes time per complaint: 5.8 us
+Model size: vocabulary 155 words, about 14904 bytes (dictionaries only)

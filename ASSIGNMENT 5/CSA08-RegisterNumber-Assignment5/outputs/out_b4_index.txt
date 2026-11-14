@@ -1,0 +1,9 @@
+Plan before index: SCAN r
+Plan after index : SEARCH r USING INDEX idx_station_day (station=? AND day>? AND day<?)
+Answer (same both times): 83.89 83.89
+Query time WITHOUT index: 48.39 ms
+Query time WITH index   : 0.12 ms
+Speed-up: about 416 times | index build time: 0.45 s
+Database size (MB): 60.6
+pandas: load CSV 0.31 s, filter 143.4 ms, answer 83.89
+DataFrame memory (MB): 134.6

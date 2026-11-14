@@ -1,0 +1,13 @@
+Agreement: 46 of 50 = 92 %
+  scorer: neutral  me: negative | Complaint number was given but no action.
+  scorer: neutral  me: negative | Oh good, the drain is dirty again.
+  scorer: neutral  me: negative | The station display is not working properly.
+  scorer: negative me: positive | I never had a bad experience with this office.
+
+Example complaint:
+   I live near the Guindy factory. Every night there is thick smoke from the chimney. My children cough at night. The smoke makes it hard to sleep. I wrote to the office twice.
+   frequency summary: Every night there is thick smoke from the chimney.
+   first-sentence   : I live near the Guindy factory.
+Summaries that contain the main problem word (10 long complaints): frequency method 10 | first sentence 2
+Time per complaint: frequency 17.9 us | first-k 2.5 us
+Sentiment scorer: 0.9 us per complaint

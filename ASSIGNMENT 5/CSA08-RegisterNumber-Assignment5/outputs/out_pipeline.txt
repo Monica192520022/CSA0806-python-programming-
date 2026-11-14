@@ -1,0 +1,17 @@
+Adyar loaded 744 rows | problems: {'missing': 27, 'impossible': 1, 'duplicates': 1, 'fahrenheit': 0, 'filled': 28, 'dropped': 0, 'bad_date': 0}
+Guindy loaded 743 rows | problems: {'missing': 20, 'impossible': 6, 'duplicates': 2, 'fahrenheit': 744, 'filled': 25, 'dropped': 1, 'bad_date': 0}
+Velachery loaded 744 rows | problems: {'missing': 17, 'impossible': 2, 'duplicates': 1, 'fahrenheit': 0, 'filled': 19, 'dropped': 0, 'bad_date': 0}
+Perungudi loaded 744 rows | problems: {'missing': 16, 'impossible': 5, 'duplicates': 1, 'fahrenheit': 744, 'filled': 21, 'dropped': 0, 'bad_date': 0}
+
+Q1 Average PM2.5 of Adyar in October:
+  61.9
+Q2 Station with the highest average PM2.5:
+  ('Guindy', 101.9)
+  ('Perungudi', 87.2)
+  ('Velachery', 76.7)
+  ('Adyar', 61.9)
+Q3 Hours with the worst air (average PM2.5 over all stations, top 4):
+  (8, 103.7)
+  (9, 103.3)
+  (20, 100.9)
+  (19, 98.9)

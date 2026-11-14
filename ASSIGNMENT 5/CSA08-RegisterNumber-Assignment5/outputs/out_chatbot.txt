@@ -1,0 +1,14 @@
+Q: Hello
+A: Hello! Ask me about the PM2.5 level of a station.
+Q: What is the PM2.5 in Adyar today?
+A: The average PM2.5 in Adyar on 2026-10-31 is 73.8 ug/m3.
+Q: Which station has the worst air today?
+A: Guindy has the worst air today (PM2.5 113.7 ug/m3).
+Q: What is the pm2.5 in Chennai?
+A: Which station do you mean? I know Adyar, Guindy, Velachery and Perungudi.
+Q: Is it safe to go jogging in Guindy?
+A: Sorry, I can only answer questions about PM2.5 and the stations.
+Q: What is the PM2.5 in Adyar yesterday?
+A: The average PM2.5 in Adyar on 2026-10-31 is 73.8 ug/m3.
+Q: Tell me a joke
+A: Sorry, I can only answer questions about PM2.5 and the stations.

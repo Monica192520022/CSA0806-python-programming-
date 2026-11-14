@@ -1,0 +1,2 @@
+Correlation between temperature and PM2.5: -0.218
+Mean PM2.5 first week: 72.0 | last week: 91.7
